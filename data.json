@@ -1,0 +1,76 @@
+{
+  "cars": [
+    {
+      "name": "Vw",
+      "user_id": 1,
+      "city_id": 1,
+      "id": 1
+    },
+    {
+      "name": "Mustang",
+      "user_id": 1,
+      "city_id": 1,
+      "id": 2
+    },
+    {
+      "name": "Camaro",
+      "user_id": 1,
+      "city_id": 1,
+      "id": 3
+    },
+    {
+      "Ford": "",
+      "id": 4
+    },
+    {
+      "name": "Ford",
+      "id": 5
+    },
+    {
+      "name": "Konigseg",
+      "id": 6
+    },
+    {
+      "name": "agera",
+      "id": 7
+    },
+    {
+      "name": "dhh",
+      "id": 8
+    },
+    {
+      "name": "Simple",
+      "id": 9
+    },
+    {
+      "name": "yayayayaya",
+      "id": 10
+    },
+    {
+      "name": "Subqru",
+      "image": "some image",
+      "description": "a car desc",
+      "id": 11
+    },
+    {
+      "name": "Subqru",
+      "image": "some image",
+      "description": "a car desc",
+      "id": 12
+    }
+  ],
+  "Cities": [
+    {
+        "id": 1,
+        "name": "New York"
+    },
+    {
+        "id": 2,
+        "name": "Paris"
+    },
+    {
+        "id": 3,
+        "name": "London"
+    }
+]
+}
