@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const getReservations = createAsyncThunk('getReservations', async () => {
     try {
-        const response = await axios.get('http://localhost:4000/reservations');
+        const response = await axios.get('http://localhost:3000/reservations');
         return response.data;
     } catch (error) {
         console.log(error);
@@ -42,8 +42,9 @@ const reservationsSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
-        builder.addCase(getReservations.fillfulled, (state, action) => {
-            return state = action.payload;
+        builder.addCase(getReservations.fulfilled, (state, action) => {
+            console.log(action.payload);
+            state = action.payload;
         });
     }
 });
