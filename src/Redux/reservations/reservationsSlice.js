@@ -1,4 +1,15 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+
+export const getReservations = createAsyncThunk('getReservations', async () => {
+    try {
+        const response = await axios.get('http://localhost:4000/reservations');
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
+})
+
 
 
 const reservationsSlice = createSlice({
@@ -30,6 +41,11 @@ const reservationsSlice = createSlice({
             state.push(action.payload);
         }
     },
+    extraReducers: (builder) => {
+        builder.addCase(getReservations.fillfulled, (state, action) => {
+            return state = action.payload;
+        });
+    }
 });
 
 export default reservationsSlice.reducer;
