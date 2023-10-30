@@ -1,59 +1,57 @@
 .res-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-image: url('https://th.bing.com/th/id/R.d8ca7b070e5cf45c252309e8bc045327?rik=8x7p3xVEuwI83Q&pid=ImgRaw&r=0');
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    isolation: isolate;
-    gap: 50px;
-    padding: 30px;
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url('https://th.bing.com/th/id/R.d8ca7b070e5cf45c252309e8bc045327?rik=8x7p3xVEuwI83Q&pid=ImgRaw&r=0');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  isolation: isolate;
+  gap: 50px;
+  padding: 30px;
+  height: 100vh;
 }
 
 .res-container::after {
-    content: '';
-    background-color: rgba(221, 239, 159, 0.88);
-    position: absolute;
-    z-index: -1;
-    inset: 0;
-    height: 100%;
+  content: '';
+  background-color: rgba(221, 239, 159, 0.88);
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  height: 100%;
 }
 
 .res-details {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    overflow-y: scroll;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .res-details::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .reservation {
-    display: flex;
-    align-items: center;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-size: cover;
-    background-position: center;
-    opacity: 0.8;
-    border-radius: 5px;
-    padding: 20px;
-    width: 300px;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-size: cover;
+  background-position: center;
+  opacity: 0.8;
+  border-radius: 5px;
+  padding: 20px;
+  width: 300px;
 }
 
-
 .res-texts {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 .res-texts h5 {
-    margin-top: 0;
+  margin-top: 0;
 }
-

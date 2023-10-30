@@ -1,14 +1,14 @@
 import './App.css'
+import './styles/Reservations.css'
+import Reservations from './components/Reservations'
 
 function App() {
 
   return (
     <>
-      <h1 className="text-3xl font-bold underline text-red-500">
-        Hello world!
-       </h1>
+      <Reservations/>
     </>
   )
 }
 
-export default App
+export default App;
