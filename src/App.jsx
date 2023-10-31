@@ -7,7 +7,6 @@ import { getCars } from './Redux/cars/carsSlice';
 import { getCities } from './Redux/cities/citySlice';
 import Reservations from './components/Reservations';
 
-
 const App = () => {
   const dispatch = useDispatch()
   useEffect(() => {

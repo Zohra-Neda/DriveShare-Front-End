@@ -1,4 +1,5 @@
 {
+
     "reservations": [
         {
             "id":1,
@@ -24,6 +25,7 @@
             "city_id": 3
         }
     ],
+
     "cars": [
     {
       "name": "Toyota Camry",
@@ -98,6 +100,4 @@
         "name": "London"
     }
 ]
-
-
 }
