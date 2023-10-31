@@ -7,7 +7,7 @@ const store = configureStore({
     reducer: {
         cars: carsSlice,
         city: citySlice,
-        reservationsSlice: reservationsSlice
+        reservations: reservationsSlice
     },
 })
 

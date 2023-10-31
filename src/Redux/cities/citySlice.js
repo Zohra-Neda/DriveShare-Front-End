@@ -10,6 +10,15 @@ export const getCities = createAsyncThunk('getCities', async (_, {rejectWithValu
     }
 });
 
+export const postCities = createAsyncThunk('postCities', async (city) => {
+    try {
+        const response = await axios.post('http://localhost:3000/cities', city);
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
+})
+
 const citySlice = createSlice({
     name: "cities",
     initialState: {
