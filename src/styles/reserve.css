@@ -1,54 +1,54 @@
 .reservation-container {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    width: 100%;
-    align-items: center;
-    color: white;
-    justify-content: center;
-    background-image: url('https://source.unsplash.com/random/?lightgreen,abstract');
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  align-items: center;
+  color: white;
+  justify-content: center;
+  background-image: url('https://source.unsplash.com/random/?lightgreen,abstract');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  isolation: isolate;
 }
 
 .reservation-container h1 {
-    text-align: center;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid black;
+  text-align: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid black;
 }
 
 .reservation-container::after {
-    content: '';
-    background-color: rgb(120 154 2 / 88%);
-    position: absolute;
-    z-index: -1;
-    inset: 0;
+  content: '';
+  background-color: rgb(120 154 2 / 88%);
+  position: absolute;
+  z-index: -1;
+  inset: 0;
 }
 
 .reservation-container input,
 .select-wrapper {
-    background-color: rgba(0, 0, 0, 0.175);
-    border: 1px solid white;
-    color: white;
-    margin-right: 4px;
+  background-color: rgba(0, 0, 0, 0.175);
+  border: 1px solid white;
+  color: white;
+  margin-right: 4px;
 }
 
 .reservation-container input:disabled {
-    background-color: rgba(255, 253, 253, 0.184) !important;
-    border: 2px solid rgba(128, 128, 128, 0.556) !important;
+  background-color: rgba(255, 253, 253, 0.184) !important;
+  border: 2px solid rgba(128, 128, 128, 0.556) !important;
 }
 
 .reservation-container select {
-    -webkit-appearance: none;
-    appearance: none;
-    background: transparent;
-    border: none;
-    outline: none;
-    color: white;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
 }
 
 .reservation-container select option {
-    color: black;
+  color: black;
 }
