@@ -1,15 +1,21 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { createUser } from "../Redux/login/loginSlice";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState('');
+  const user = useSelector((state) => state.username);
+  const status = useSelector((state) => state.status);
+  const handleChange = (e) => {
+    setUsername(e.target.value);
+  }
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username);
-  };
-
-  const handleChange = (e) => {
-    setUsername(e.target.value);
+    dispatch(createUser(username));
+    console.log(user);
+    console.log(status);
   }
 
   return (
