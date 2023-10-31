@@ -1,11 +1,12 @@
+import 'bootstrap/dist/css/bootstrap.css';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
 import HomePage from './routes/Home/HomePage';
-import './styles/Reservations.css'
 import { getCars } from './Redux/cars/carsSlice';
 import { getCities } from './Redux/cities/citySlice';
 import Reservations from './components/Reservations';
+import ReservationForm from './components/ReservationForm';
 import Details from './routes/Home/Details';
 import { Routes,Route } from 'react-router-dom';
 
@@ -17,14 +18,12 @@ const App = () => {
     dispatch(getCities())
   })
   return (
-    <main className='main'>
-      <HomePage />
-      <Reservations/>
       <Routes>
+        <Route path='/reservations' element={<Reservations/>} />
+        <Route path='/reserve' element={ <ReservationForm/> }  />
         <Route path="/" element={<HomePage />} exact />
-        <Route path="/details/:carId"element={<Details/>} ></Route>
+        <Route path="/details/:carId" element={<Details/>} ></Route>
       </Routes>
-    </main>
   )
 }
 
