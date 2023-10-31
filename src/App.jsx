@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
-// import HomePage from './routes/Home/HomePage';
+import HomePage from './routes/Home/HomePage';
 import './styles/Reservations.css'
 import { getCars } from './Redux/cars/carsSlice';
 import { getCities } from './Redux/cities/citySlice';
@@ -18,7 +18,7 @@ const App = () => {
   })
   return (
     <main className='main'>
-      {/* <HomePage /> */}
+      <HomePage />
       <Reservations/>
       <Routes>
         <Route path="/" element={<HomePage />} exact />
