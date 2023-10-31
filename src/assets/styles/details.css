@@ -1,0 +1,39 @@
+.car-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.car-details {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  padding: 1rem;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.car-image {
+  text-align: center;
+}
+
+.car-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.reserve-button {
+  background-color: green;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+@media screen and (min-width: 769px) {
+  .car-details {
+    flex-direction: row;
+    gap: 20px;
+  }
+}
