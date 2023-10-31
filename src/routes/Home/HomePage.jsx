@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import Paginated from "./Paginated";
-import AddCar from "../../components/AddCar";
+// import AddCar from "../../components/AddCar";
 import {
     selectAllCars,
     selectLoading,
@@ -25,7 +25,7 @@ const HomePage = () => {
                 {loadingFailed && <p>{loadingError}</p>}
             </>
         </section>
-            <AddCar />
+            {/* <AddCar /> */}
         </>
     )
 }
