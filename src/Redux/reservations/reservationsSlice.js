@@ -10,6 +10,16 @@ export const getReservations = createAsyncThunk('getReservations', async () => {
     }
 })
 
+export const postReservations = createAsyncThunk('postReservations', async (reservation) => {
+    try {
+        const response = await axios.post('http://localhost:3000/reservations', reservation);
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
+})
+
+
 
 
 const reservationsSlice = createSlice({
