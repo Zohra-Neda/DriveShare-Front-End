@@ -1,7 +1,34 @@
 {
-  "cars": [
+
+    "reservations": [
+        {
+            "id":1,
+            "start_date": "2024-10-30",
+            "end_date": "2023-12-28",
+            "user_id": 1,
+            "car_id": 1,
+            "city_id": 1
+        },
+        {
+            "id": 2,
+            "start_date": "2025-10-30",
+            "end_date": "2023-12-28",
+            "user_id": 1,
+            "car_id": 2,
+            "city_id": 2
+        },{
+            "id": 3,
+            "start_date": "2026-10-30",
+            "end_date": "2023-12-28",
+            "user_id": 1,
+            "car_id": 3,
+            "city_id": 3
+        }
+    ],
+
+    "cars": [
     {
-      "name": "Vw",
+      "name": "Toyota Camry",
       "description": "Mazda MX-5 is Sports car Roadster That was made in 1989",
       "price": 100,
       "user_id": 1,
@@ -9,7 +36,7 @@
       "id": 1
     },
     {
-      "name": "Mustang",
+      "name": "Honda Civic",
       "description": "Mazda MX-5 is Sports car Roadster That was made in 1989",
       "price": 100,
       "user_id": 1,
