@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PropTypes from 'prop-types';
 import car from '../../assets/car.png';
-
+import { NavLink } from "react-router-dom";
 const Pagineted = ({ items }) => {
     const [startIndex, setStartIndex] = useState(0);
 
@@ -23,9 +23,10 @@ const Pagineted = ({ items }) => {
         <>
             <ul className="car-list">
                 {itemsToDisplay?.length ? itemsToDisplay?.map((item) => (
+                    <NavLink to={`details/${item.id}`} key={item.id}>
                     <li
-                        key={item.id}
-                        className='car'
+                       
+                        className='car cursor-pointer'
                     >
                         <div className="car-head">
                             <img src={car} alt={item.name} />
@@ -33,6 +34,7 @@ const Pagineted = ({ items }) => {
                         <h2>{item.name}</h2>
                         <p>{item.description}</p>
                     </li>
+                    </NavLink>
                 )) : <h2>No items</h2>}
             </ul>
 
