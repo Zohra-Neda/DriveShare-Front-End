@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-export const createUser = createAsyncThunk('users/createUser', async ({ username }, thunkAPI) => {
+export const createUser = createAsyncThunk('users/createUser', async (username, thunkAPI) => {
   try {
-    const user = { username };
+    const user = { name: username };
     const response = await fetch("http://localhost:3000/users", {
       method: "POST",
       headers: {

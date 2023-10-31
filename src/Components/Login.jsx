@@ -13,9 +13,9 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(username);
     dispatch(createUser(username));
-    console.log(user);
-    console.log(status);
+
   }
 
   return (
