@@ -1,13 +1,21 @@
-import './App.css'
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
-function App() {
+import HomePage from './routes/Home/HomePage';
+import { getCars } from './Redux/cars/carsSlice';
+import { getCities } from './Redux/cities/citySlice';
 
+
+const App = () => {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getCars())
+    dispatch(getCities())
+  })
   return (
-    <>
-      <h1 className="text-3xl font-bold underline text-red-500">
-        Hello world!
-       </h1>
-    </>
+    <main className='main'>
+        <HomePage />
+    </main>
   )
 }
 
