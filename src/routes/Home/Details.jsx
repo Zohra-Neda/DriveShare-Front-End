@@ -2,11 +2,9 @@
 import React from 'react'
 import { useSelector} from 'react-redux'
 import image from '../../assets/car.png';
-import {
-    selectAllCars,
-    selectLoading,
-} from "../../Redux/cars/carsSlice";
+import { selectAllCars,selectLoading } from "../../Redux/cars/carsSlice";
 import { useParams } from 'react-router-dom';
+import "../../assets/styles/details.css"
 
 function Details() {
     const cars = useSelector(selectAllCars);
