@@ -30,7 +30,8 @@ const App = () => {
         <Route path="/reservations"element={<Reservations/>} ></Route>
         <Route path="/add-car"element={<AddCar/>} ></Route>
       </Routes>
+      </main>
   )
 }
 
-export default App
+export default App;
