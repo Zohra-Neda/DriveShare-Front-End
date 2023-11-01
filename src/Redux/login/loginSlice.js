@@ -16,9 +16,28 @@ export const createUser = createAsyncThunk('users/createUser', async (username, 
   }
 });
 
+export const getAllUsers = createAsyncThunk('users/getAllUsers', async (username, thunkAPI) => {
+  try {
+    const response = await fetch("http://localhost:3000/users");
+    return response.data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.response.data);
+  }
+});
+
+export const getUser = createAsyncThunk('users/getUser', async (username, thunkAPI) => {
+  try {
+    const response = await fetch(`http://localhost:3000/users/${username}`);
+    return response.data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.response.data);
+  }
+});
+
 const loginSlice = createSlice({
   name: "login",
   initialState: {
+    users: [],
     username: "",
     status: null,
     error: null,
@@ -40,7 +59,20 @@ const loginSlice = createSlice({
       state.status = "failed";
       state.error = action.payload;
     },
+    [getAllUsers.pending]: (state, action) => {
+      state.status = "loading";
+    },
+    [getAllUsers.fulfilled]: (state, action) => {
+      state.status = "succeeded";
+      state.users = action.payload;
+    },
+    [getAllUsers.rejected]: (state, action) => {
+      state.status = "failed";
+      state.error = action.payload;
+    },
   },
 });
 
 export default loginSlice.reducer;
+
+export const selectAllUsers = (state) => state.users;
