@@ -15,6 +15,7 @@ const Login = () => {
     e.preventDefault();
     console.log(username);
     dispatch(createUser(username));
+    localStorage.setItem('user', JSON.stringify(username));
     toast(`Welcome, ${username}!`, {
       position: "top-right",
       autoClose: 5000,
