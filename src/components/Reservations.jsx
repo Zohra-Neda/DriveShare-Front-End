@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { getReservations } from '../Redux/reservations/reservationsSlice';
 import ReservationsCard from './ReservationsCard';
+import '../styles/Reservations.css'
 
 
 function Reservations() {
@@ -11,7 +12,7 @@ function Reservations() {
     dispatch(getReservations());
   }, [dispatch]);
 
-  const reservations = useSelector(state => state.reservationsSlice.data);
+  const reservations = useSelector(state => state.reservations.data);
   console.log(reservations);
 
 
