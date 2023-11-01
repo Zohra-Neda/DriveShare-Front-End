@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { createUser } from "../Redux/login/loginSlice";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "../index.css"
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -31,7 +32,7 @@ const Login = () => {
 
   return (
       <div className="bg-gray-900 text-white h-screen w-full flex flex-col items-center justify-center">
-        <h1 className="text-4xl font-semibold"><span className="text-yellow-500">Drive</span>Share</h1>
+        <h1 className="text-4xl font-semibold"><span className="login-title">Drive</span>Share</h1>
         <div className="px-6 py-3 bg-black rounded-sm">
           <form onSubmit={handleSubmit} className="flex opacity-100">
             <div id="bg-input" className="p-1">

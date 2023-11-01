@@ -139,3 +139,7 @@ select:focus {
   color: #fff;
   cursor: not-allowed;
 }
+
+.login-title {
+  color: #97bf0f;
+}
