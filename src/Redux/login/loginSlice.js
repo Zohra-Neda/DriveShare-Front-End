@@ -48,7 +48,7 @@ const loginSlice = createSlice({
     },
   },
   extraReducers: {
-    [createUser.pending]: (state, action) => {
+    [createUser.pending]: (state) => {
       state.status = "loading";
     },
     [createUser.fulfilled]: (state, action) => {
@@ -59,7 +59,7 @@ const loginSlice = createSlice({
       state.status = "failed";
       state.error = action.payload;
     },
-    [getAllUsers.pending]: (state, action) => {
+    [getAllUsers.pending]: (state) => {
       state.status = "loading";
     },
     [getAllUsers.fulfilled]: (state, action) => {

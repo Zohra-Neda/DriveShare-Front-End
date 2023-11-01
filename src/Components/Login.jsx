@@ -6,8 +6,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const [username, setUsername] = useState('');
-  const user = useSelector((state) => state.username);
-  const status = useSelector((state) => state.status);
   const handleChange = (e) => {
     setUsername(e.target.value);
   }
