@@ -8,6 +8,8 @@ import { getCities } from './Redux/cities/citySlice';
 import Reservations from './components/Reservations';
 import Details from './routes/Home/Details';
 import { Routes,Route } from 'react-router-dom';
+import Sidebar from './components/Sidebar';
+import AddCar from "./components/AddCar";
 
 
 const App = () => {
@@ -18,11 +20,12 @@ const App = () => {
   })
   return (
     <main className='main'>
-      <HomePage />
-      <Reservations/>
+      <Sidebar/>
       <Routes>
         <Route path="/" element={<HomePage />} exact />
         <Route path="/details/:carId"element={<Details/>} ></Route>
+        <Route path="/reservations"element={<Reservations/>} ></Route>
+        <Route path="/add-car"element={<AddCar/>} ></Route>
       </Routes>
     </main>
   )
