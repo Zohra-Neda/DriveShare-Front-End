@@ -1,7 +1,6 @@
 import { ToastContainer } from 'react-toastify'
 import './App.css'
-import Login from './components/Login'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
 import HomePage from './routes/Home/HomePage';
@@ -22,6 +21,7 @@ const App = () => {
   })
   return (
     <main className='main'>
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<RequireAuth />} exact >
           <Route path="/" element={<HomePage />} exact />

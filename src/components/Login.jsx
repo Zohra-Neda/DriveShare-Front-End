@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
 import { createUser } from "../Redux/login/loginSlice";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -24,6 +23,7 @@ const Login = () => {
     console.log(username);
     dispatch(createUser(username));
     localStorage.setItem('user', JSON.stringify(username));
+
     toast(`Welcome, ${username}!`, {
       position: "top-right",
       autoClose: 5000,
