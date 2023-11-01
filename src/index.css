@@ -143,3 +143,11 @@ select:focus {
 .login-title {
   color: #97bf0f;
 }
+
+.login-btn:hover {
+  background-color: #97bf0f;
+}
+
+.Toastify__progress-bar {
+  background-color: #97bf0f;
+}

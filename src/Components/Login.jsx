@@ -46,7 +46,7 @@ const Login = () => {
             </div>
             <button
               type="submit"
-              className="ml-4 cursor-pointer hover:bg-yellow-500 hover:text-blue-t00 px-4 py-1 rounded-sm text-white focus:outline-none focus:bg-yellow-5"
+              className="login-btn ml-4 cursor-pointer hover:text-blue-t00 px-4 py-1 rounded-sm text-white focus:outline-none focus:bg-yellow-5"
             >
               GO
             </button>
