@@ -1,4 +1,4 @@
-
+{
   "reservations": [
     {
       "id": 1,
@@ -51,32 +51,12 @@
   ],
   "cars": [
     {
-      "name": "Toyota Camry",
-      "description": "Mazda MX-5 is Sports car Roadster That was made in 1989",
-      "price": 100,
-      "user_id": 1,
-      "city_id": 1,
-      "id": 1
-    },
-    {
       "name": "Honda Civic",
       "description": "Mazda MX-5 is Sports car Roadster That was made in 1989",
       "price": 100,
       "user_id": 1,
       "city_id": 1,
       "id": 2
-    },
-    {
-      "name": "Camaro",
-      "description": "Mazda MX-5 is Sports car Roadster That was made in 1989",
-      "price": 100,
-      "user_id": 1,
-      "city_id": 1,
-      "id": 3
-    },
-    {
-      "Ford": "",
-      "id": 4
     },
     {
       "name": "Ford",
@@ -91,16 +71,8 @@
       "id": 7
     },
     {
-      "name": "dhh",
-      "id": 8
-    },
-    {
       "name": "Simple",
       "id": 9
-    },
-    {
-      "name": "yayayayaya",
-      "id": 10
     },
     {
       "name": "Subqru",

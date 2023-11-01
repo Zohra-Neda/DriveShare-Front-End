@@ -10,10 +10,20 @@ export const getCars = createAsyncThunk('getCars', async (_, {rejectWithValue}) 
     }
 });
 
-export const postCar = createAsyncThunk('postCars', async (car, {rejectWithValue}) => {
+export const postCar = createAsyncThunk('postCars', async (car, {rejectWithValue, dispatch}) => {
     try{
         const response = await axios.post('http://localhost:3000/cars', car);
-        getCars();
+        dispatch(getCars());
+        return response.data;
+    }catch(err) {
+        return rejectWithValue(err.message);
+    }
+});
+
+export const deleteCar = createAsyncThunk('deleteCar', async (id, {rejectWithValue, dispatch}) => {
+    try{
+        const response = await axios.delete(`http://localhost:3000/cars/${id}`);
+        dispatch(getCars());
         return response.data;
     }catch(err) {
         return rejectWithValue(err.message);

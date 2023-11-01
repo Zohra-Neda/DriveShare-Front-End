@@ -14,6 +14,7 @@ import { Routes,Route } from 'react-router-dom';
 import RequireAuth from './components/RequireAuth';
 import Sidebar from './components/Sidebar';
 import AddCar from "./components/AddCar";
+import DeleteCar from './components/DeleteCar';
 
 const App = () => {
   const dispatch = useDispatch()
@@ -32,6 +33,7 @@ const App = () => {
           <Route path="/details/:carId"element={<Details/>} ></Route>
           <Route path="/reserve"element={<ReservationForm/>} ></Route>
           <Route path="/add-car"element={<AddCar/>} ></Route>
+          <Route path="/delete-car"element={<DeleteCar />} ></Route>
         </Route>
       </Routes>
       </main>
