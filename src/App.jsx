@@ -1,7 +1,7 @@
 import { ToastContainer } from 'react-toastify'
 import './App.css'
-import Login from './Components/Login'
-import { useDispatch } from 'react-redux';
+import Login from './components/Login'
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
 import HomePage from './routes/Home/HomePage';
@@ -11,6 +11,7 @@ import { getCities } from './Redux/cities/citySlice';
 import Reservations from './components/Reservations';
 import Details from './routes/Home/Details';
 import { Routes,Route } from 'react-router-dom';
+import RequireAuth from './components/RequireAuth';
 
 
 const App = () => {
@@ -19,22 +20,14 @@ const App = () => {
     dispatch(getCars())
     dispatch(getCities())
   })
-
-  if (!localStorage.getItem('user')) {
-    return (
-      <>
-        <ToastContainer />
-        <Login />
-      </>
-    )
-  }
-
   return (
     <main className='main'>
-      <HomePage />
-      <Reservations/>
       <Routes>
-        <Route path="/" element={<HomePage />} exact />
+        <Route path="/" element={<RequireAuth />} exact >
+          <Route path="/" element={<HomePage />} exact />
+          <Route path="/reservations" element={<Reservations />} exact />
+        </Route>
+
         <Route path="/details/:carId"element={<Details/>} ></Route>
       </Routes>
     </main>

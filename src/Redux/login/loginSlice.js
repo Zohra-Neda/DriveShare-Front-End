@@ -48,18 +48,19 @@ const loginSlice = createSlice({
     },
   },
   extraReducers: {
-    [createUser.pending]: (state) => {
+    [createUser.pending]: (state, action) => {
       state.status = "loading";
     },
     [createUser.fulfilled]: (state, action) => {
       state.status = "succeeded";
-      state.username = action.payload.username;
+      console.log(action);
+      state.username = action.payload?.username;
     },
     [createUser.rejected]: (state, action) => {
       state.status = "failed";
       state.error = action.payload;
     },
-    [getAllUsers.pending]: (state) => {
+    [getAllUsers.pending]: (state, action) => {
       state.status = "loading";
     },
     [getAllUsers.fulfilled]: (state, action) => {

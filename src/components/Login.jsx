@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { createUser } from "../Redux/login/loginSlice";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -14,6 +15,12 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!username) {
+      toast.error("Please enter a username", {
+        theme: "dark",
+      });
+      return;
+    }
     console.log(username);
     dispatch(createUser(username));
     localStorage.setItem('user', JSON.stringify(username));
@@ -26,8 +33,7 @@ const Login = () => {
       draggable: true,
       progress: undefined,
       theme: "dark",
-
-      });
+    });
   }
 
   return (
