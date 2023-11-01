@@ -9,7 +9,7 @@ const store = configureStore({
         login: loginSlice,
         cars: carsSlice,
         city: citySlice,
-        reservationsSlice: reservationsSlice
+        reservations: reservationsSlice
     },
 })
 

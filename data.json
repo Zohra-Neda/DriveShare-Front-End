@@ -1,34 +1,4 @@
-{
-  "users": [
-    {
-      "id": 1,
-      "name": "Aamir"
-    },
-    {
-      "id": 2,
-      "name": "Benedict"
-    },
-    {
-      "id": 3,
-      "name": "Manzi"
-    },
-    {
-      "id": 4,
-      "name": "Zohra"
-    },
-    {
-      "name": "John",
-      "id": 5
-    },
-    {
-      "name": "Jackson",
-      "id": 6
-    },
-    {
-      "name": "Aamir",
-      "id": 7
-    }
-  ],
+
   "reservations": [
     {
       "id": 1,
@@ -53,6 +23,30 @@
       "user_id": 1,
       "car_id": 3,
       "city_id": 3
+    },
+    {
+      "fullName": "",
+      "car_id": "",
+      "city": "",
+      "start_date": "",
+      "end_date": "",
+      "id": 4
+    },
+    {
+      "fullName": "",
+      "car_id": "",
+      "city": "",
+      "start_date": "",
+      "end_date": "",
+      "id": 5
+    },
+    {
+      "fullName": "",
+      "car_id": "",
+      "city": "",
+      "start_date": "",
+      "end_date": "",
+      "id": 6
     }
   ],
   "cars": [

@@ -1,17 +1,19 @@
 import { ToastContainer } from 'react-toastify'
 import './App.css'
+import 'bootstrap/dist/css/bootstrap.css';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
 import HomePage from './routes/Home/HomePage';
-import './styles/Reservations.css'
 import { getCars } from './Redux/cars/carsSlice';
 import { getCities } from './Redux/cities/citySlice';
 import Reservations from './components/Reservations';
+import ReservationForm from './components/ReservationForm';
 import Details from './routes/Home/Details';
 import { Routes,Route } from 'react-router-dom';
 import RequireAuth from './components/RequireAuth';
-
+import Sidebar from './components/Sidebar';
+import AddCar from "./components/AddCar";
 
 const App = () => {
   const dispatch = useDispatch()
@@ -22,16 +24,18 @@ const App = () => {
   return (
     <main className='main'>
       <ToastContainer />
+      <Sidebar/>
       <Routes>
         <Route path="/" element={<RequireAuth />} exact >
           <Route path="/" element={<HomePage />} exact />
           <Route path="/reservations" element={<Reservations />} exact />
+          <Route path="/details/:carId"element={<Details/>} ></Route>
+          <Route path="/reservations"element={<Reservations/>} ></Route>
+          <Route path="/add-car"element={<AddCar/>} ></Route>
         </Route>
-
-        <Route path="/details/:carId"element={<Details/>} ></Route>
       </Routes>
-    </main>
+      </main>
   )
 }
 
-export default App
+export default App;
