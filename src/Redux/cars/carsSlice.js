@@ -20,6 +20,16 @@ export const postCar = createAsyncThunk('postCars', async (car, {rejectWithValue
     }
 });
 
+export const deleteCar = createAsyncThunk('deleteCar', async (id, {rejectWithValue}) => {
+    try{
+        const response = await axios.delete(`http://localhost:3000/cars/${id}`);
+        getCars();
+        return response.data;
+    }catch(err) {
+        return rejectWithValue(err.message);
+    }
+});
+
 const carsSlice = createSlice({
     name: "cars",
     initialState: {
