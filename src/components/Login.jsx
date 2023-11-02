@@ -22,7 +22,6 @@ const Login = () => {
     }
     console.log(username);
     dispatch(createUser(username));
-    localStorage.setItem('user', JSON.stringify(username));
 
     toast(`Welcome, ${username}!`, {
       position: "top-right",

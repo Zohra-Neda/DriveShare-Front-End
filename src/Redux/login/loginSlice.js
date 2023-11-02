@@ -1,16 +1,15 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from 'axios';
 
 export const createUser = createAsyncThunk('users/createUser', async (username, thunkAPI) => {
   try {
-    const user = { name: username };
-    const response = await fetch("http://localhost:3000/users", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user),
-    });
-    return response.data;
+    const user = { "name": username };
+    const response = await axios.post("http://localhost:3000/users", user);
+    if (response.status === 200 || response.status === 201) {
+      localStorage.setItem('user', JSON.stringify(response.data));
+      return response.data;
+    }
+    return
   } catch (error) {
     return thunkAPI.rejectWithValue(error.response.data);
   }
@@ -37,15 +36,9 @@ export const getUser = createAsyncThunk('users/getUser', async (username, thunkA
 const loginSlice = createSlice({
   name: "login",
   initialState: {
-    users: [],
-    username: "",
+    user: null,
     status: null,
     error: null,
-  },
-  reducers: {
-    setUsername: (state, action) => {
-      state.username = action.payload;
-    },
   },
   extraReducers: {
     [createUser.pending]: (state) => {
@@ -53,8 +46,7 @@ const loginSlice = createSlice({
     },
     [createUser.fulfilled]: (state, action) => {
       state.status = "succeeded";
-      console.log(action);
-      state.username = action.payload?.username;
+      state.user = action.payload;
     },
     [createUser.rejected]: (state, action) => {
       state.status = "failed";
