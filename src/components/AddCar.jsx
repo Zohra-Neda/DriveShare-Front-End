@@ -20,6 +20,7 @@ const AddCar = () => {
 
   const [name, setName] = useState('');
   const [image, setImage] = useState('');
+  const [price, setPrice] = useState(0);
   const [description, setDescription] = useState('');
   const [city, setCity] = useState('');
 
@@ -60,6 +61,14 @@ const AddCar = () => {
                     type="text"
                     value={image}
                     onChange={(e) => setImage(e.target.value)}
+                />
+            </label>
+            <label htmlFor="">
+                Car price:<br />
+                <input
+                    type="number"
+                    value={price}
+                    onChange={(e) => setPrice(e.target.value)}
                 />
             </label>
             <label htmlFor="">

@@ -17,7 +17,9 @@ svg {
 
 .main {
   width: 100vw;
-  padding: 64px;
+
+  /* padding: 64px; */
+  display: flex;
 }
 
 .home {
@@ -28,6 +30,10 @@ svg {
   justify-content: center;
   flex-direction: column;
   position: relative;
+}
+
+section {
+  width: 100%;
 }
 
 h1 {
@@ -66,6 +72,10 @@ h1 {
   display: flex;
   padding: 12px;
   gap: 12px;
+}
+
+.car-form {
+  width: 100%;
 }
 
 .car-form h2 {
@@ -150,4 +160,21 @@ select:focus {
 
 .Toastify__progress-bar {
   background-color: #97bf0f;
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    flex-direction: column;
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .car-list {
+    flex-direction: column;
+    margin-top: 175px;
+  }
+
+  .car-form form {
+    width: 100%;
+  }
 }

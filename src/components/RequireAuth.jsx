@@ -4,9 +4,10 @@ import { useSelector } from "react-redux"
 
 const RequireAuth = () => {
   const status = useSelector((state) => state.login.status)
+  const user = useSelector((state) => state.login.user) || localStorage.getItem('user')
   return (
     <>
-      {status ? <Outlet /> : <Login />}
+      {user || status ? <Outlet /> : <Login />}
     </>
   )
 }
