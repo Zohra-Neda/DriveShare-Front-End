@@ -36,7 +36,7 @@ function ReservationForm() {
   const { fullName, car_id, city, start_date, end_date } = formData;
 
   return (
-    <main>
+    <section>
       <div className="reservation-container">
         <h1>Create New Reservation</h1>
         <form
@@ -104,7 +104,7 @@ function ReservationForm() {
       </button>
     </form>
       </div>
-    </main>
+    </section>
   );
 }
 

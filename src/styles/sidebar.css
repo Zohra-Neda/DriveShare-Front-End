@@ -28,6 +28,8 @@
 .nav-menu.active {
   left: 0;
   transition: 350ms;
+  position: absolute;
+  z-index: 2;
 }
 
 .nav-text {
@@ -85,13 +87,17 @@ span {
   .nav-menu-hidden,
   .nav-menu {
     transform: translateX(0);
-    position: absolute;
+    position: relative;
     left: 0;
     top: 0;
     width: 20%;
     float: left;
     border-right: 1px solid #0003;
     margin-right: 20px;
+  }
+
+  .nav-menu.active {
+    position: relative;
   }
 
   .close-bars .menu-bars {
