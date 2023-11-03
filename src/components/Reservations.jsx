@@ -13,8 +13,6 @@ function Reservations() {
   }, [dispatch]);
 
   const reservations = useSelector(state => state.reservations.data);
-  console.log(reservations);
-
 
   return (
     <section className="res-container">

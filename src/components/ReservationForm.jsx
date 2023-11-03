@@ -8,6 +8,7 @@ function ReservationForm() {
   const dispatch = useDispatch();
   const cars = useSelector(state => state.cars.data); // Updated state path to access the cars array
   const cities = useSelector(state => state.city.data); // Updated state path to access the cities array
+  const user = useSelector(state => state.login.data) || JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
     dispatch(getReservations());
@@ -31,6 +32,13 @@ function ReservationForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(postReservations(formData));
+    setFormData({
+      fullName: '',
+      car_id: '',
+      city: '',
+      start_date: '',
+      end_date: ''
+    })
   }
 
   const { fullName, car_id, city, start_date, end_date } = formData;
@@ -78,7 +86,7 @@ function ReservationForm() {
           >
             <option value="">Select a city</option>
             {cities?.map((city) => (
-              <option key={city.id} value={city.name}>
+              <option key={city.id} value={city.id}>
                 {city.name}
               </option>
             ))}
