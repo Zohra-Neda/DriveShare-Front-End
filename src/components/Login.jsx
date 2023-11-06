@@ -20,19 +20,8 @@ const Login = () => {
       });
       return;
     }
-    console.log(username);
     dispatch(createUser(username));
-
-    toast(`Welcome, ${username}!`, {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-    });
+    setUsername('');
   }
 
   return (
@@ -46,7 +35,7 @@ const Login = () => {
                 placeholder="Username"
                 onChange={handleChange}
                 value={username}
-                className="w-1/2 bg-black px-4 py-1 focus:outline-none"
+                className="bg-black px-4 py-1 focus:outline-none"
               />
             </div>
             <button

@@ -1,29 +1,28 @@
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
-import { getReservations } from '../Redux/reservations/reservationsSlice';
-import ReservationsCard from './ReservationsCard';
-import '../styles/Reservations.css'
+import { useSelector } from 'react-redux/es/hooks/useSelector';
+import { selectAllCars } from '../Redux/cars/carsSlice';
+import { selectAllCities } from '../Redux/cities/citySlice';
+import PropTypes from 'prop-types';
 
 
-function Reservations() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getReservations());
-  }, [dispatch]);
-
-  const reservations = useSelector(state => state.reservations.data);
-
+function ReservationsCard({reservation}) {
+  const cars = useSelector(selectAllCars);
+  const cities = useSelector(selectAllCities);
+  const car = cars.find(c => c.id === reservation.car_id);
+  const city = cities.find(c => c.id === reservation.city_id);
   return (
-    <section className="res-container">
-      <div><h1>My Reservations</h1></div>
-      <div className="res-details">
-        {reservations.map((reservation) => (
-          <ReservationsCard reservation={reservation} key={reservation.id}/>
-        ))}
+    <div>
+      <div className="reservation">
+        <div className="res-texts">
+          <h5>{car ? car.name : "Unknown Car"}</h5>
+          <p>City: {city ? city.name : "Unknown City"}</p>
+          <p>Start Date: {reservation.start_date}</p>
+          <p>End Date: {reservation.end_date}</p>
+        </div>
       </div>
-    </section>
+    </div>
   );
 }
-
-export default Reservations;
+ReservationsCard.propTypes = {
+    reservation: PropTypes.object.isRequired
+}
+export default ReservationsCard

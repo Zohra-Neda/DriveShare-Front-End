@@ -24,7 +24,6 @@ svg {
 
 .home {
   width: 100%;
-  height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,9 +44,11 @@ h1 {
 .car-list {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+  flex-flow: row wrap;
   padding: 12px;
   width: 100%;
+  gap: 8%;
 }
 
 .car {
@@ -66,6 +67,24 @@ h1 {
   width: 260px;
   height: 170px;
   overflow: hidden;
+  position: relative;
+}
+
+.available,
+.reserved {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 5px 7px;
+  border-radius: 10px;
+  background-color: #97bf0f;
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.reserved {
+  background-color: #ccc;
 }
 
 .page-numbers {
@@ -162,6 +181,12 @@ select:focus {
   background-color: #97bf0f;
 }
 
+.delete-section {
+  overflow-y: scroll;
+  height: 100vh;
+  width: 100%;
+}
+
 @media screen and (max-width: 768px) {
   .main {
     flex-direction: column;
@@ -171,7 +196,6 @@ select:focus {
 
   .car-list {
     flex-direction: column;
-    margin-top: 175px;
   }
 
   .car-form form {

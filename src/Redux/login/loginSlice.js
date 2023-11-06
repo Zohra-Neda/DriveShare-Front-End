@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 import axios from 'axios';
 
 export const createUser = createAsyncThunk('users/createUser', async (username, thunkAPI) => {
@@ -7,29 +8,31 @@ export const createUser = createAsyncThunk('users/createUser', async (username, 
     const response = await axios.post("http://localhost:3000/users", user);
     if (response.status === 200 || response.status === 201) {
       localStorage.setItem('user', JSON.stringify(response.data));
+      toast(`Welcome, ${username}!`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
       return response.data;
     }
     return
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.response.data);
-  }
-});
-
-export const getAllUsers = createAsyncThunk('users/getAllUsers', async (username, thunkAPI) => {
-  try {
-    const response = await fetch("http://localhost:3000/users");
-    return response.data;
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.response.data);
-  }
-});
-
-export const getUser = createAsyncThunk('users/getUser', async (username, thunkAPI) => {
-  try {
-    const response = await fetch(`http://localhost:3000/users/${username}`);
-    return response.data;
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.response.data);
+    toast.error(`${error.message}!`, {
+      position: "top-right",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+    return thunkAPI.rejectWithValue(error.message);
   }
 });
 
@@ -39,6 +42,19 @@ const loginSlice = createSlice({
     user: null,
     status: null,
     error: null,
+  },
+  reducers: {
+    logout: (state) => {
+      localStorage.removeItem('user');
+      state.user = null;
+      state.status = null;
+    },
+    refresh: (state) => {
+      state.user = JSON.parse(localStorage.getItem('user'));
+      if (state.user !== null) {
+        state.status = "succeeded";
+      }
+    }
   },
   extraReducers: {
     [createUser.pending]: (state) => {
@@ -52,20 +68,8 @@ const loginSlice = createSlice({
       state.status = "failed";
       state.error = action.payload;
     },
-    [getAllUsers.pending]: (state) => {
-      state.status = "loading";
-    },
-    [getAllUsers.fulfilled]: (state, action) => {
-      state.status = "succeeded";
-      state.users = action.payload;
-    },
-    [getAllUsers.rejected]: (state, action) => {
-      state.status = "failed";
-      state.error = action.payload;
-    },
   },
 });
 
+export const { logout, refresh } = loginSlice.actions;
 export default loginSlice.reducer;
-
-export const selectAllUsers = (state) => state.users;

@@ -1,13 +1,18 @@
+import { useEffect } from "react"
 import Login from "./Login"
 import { Outlet } from "react-router-dom"
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
+import { refresh } from "../Redux/login/loginSlice"
 
 const RequireAuth = () => {
-  const status = useSelector((state) => state.login.status)
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(refresh())
+  }, [dispatch])
   const user = useSelector((state) => state.login.user) || localStorage.getItem('user')
   return (
     <>
-      {user || status ? <Outlet /> : <Login />}
+      {user ? <Outlet /> : <Login />}
     </>
   )
 }

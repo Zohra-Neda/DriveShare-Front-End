@@ -1,6 +1,8 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { logout } from '../Redux/login/loginSlice';
 import {
     FaSignInAlt,
     FaTwitter,
@@ -13,8 +15,9 @@ import {
 import '../styles/sidebar.css';
 
 function Sidebar() {
+    const dispatch = useDispatch();
     const [sidebar, setSidebar] = useState(false);
-    const loginStatus = true;
+    const loginStatus = useSelector((state) => state.login.status);
     const sidebarData = [
         {
           id: 1,
@@ -47,24 +50,7 @@ function Sidebar() {
             cName: 'nav-text',
           },
       ];
-    
-      const loggedOutLinks = [
-        {
-          id: 1,
-          path: '/signup',
-          title: 'Signup',
-          icon: <FaSignInAlt />,
-          cName: 'nav-text',
-        },
-        {
-          id: 2,
-          path: '/login',
-          title: 'Login',
-          icon: <FaSignInAlt />,
-          cName: 'nav-text',
-        },
-      ];
-    
+
       const showSidebar = () => setSidebar(!sidebar);
       const [windowWidth, setWindowWidth] = useState(window.innerWidth);
       const handleResize = () => {
@@ -82,78 +68,75 @@ function Sidebar() {
       const closeSidebar = () => {
         setSidebar(false);
       };
-
+      const handleLogout = () => {
+        dispatch(logout());
+      }
   return (
     <>
-    <IconContext.Provider value={{ color: '#97bf0f' }}>
-    {windowWidth <= 768 ? (
-          sidebar ? (
-            <FaTimes className="close-bars cursor-pointer" onClick={closeSidebar} />
-          ) : (
-            <FaBars className="menu-bars cursor-pointer" onClick={toggleSidebar} />
-          )
-        ) : null}
-        <nav
-          className={`${
-            sidebar ? 'nav-menu active' : 'nav-menu-hidden'
-          }`}
-        >
-            <div
-            className={`overlay ${sidebar ? 'active' : ''}`}
-            onClick={closeSidebar}
-          ></div>
-          <ul className='grid grid-rows-8 items-center' onClick={showSidebar}>
-            <a href='/' className='row-span-2 flex justify-center mx-auto text-[#97bf0f] font-semibold'>
-              Drive share
-            </a>
-            <ul className='row-span-4 flex flex-col gap-y-3'>
-              {loginStatus
-                ? sidebarData.map((link) => (
-                  <li key={link.id}>
-                    <NavLink
-                      onClick={showSidebar}
-                      key={link.id}
-                      to={link.path}
-                      className={link.cName}
-                    >
-                      {link.icon}
-                      {link.title}
-                    </NavLink>
-                  </li>
-                ))
-                : loggedOutLinks.map((link) => (
-                  <li
-                    key={link.id}
-                    className='flex justify-center hover:bg-main h-[46px]'
+      { loginStatus && <>
+        <IconContext.Provider value={{ color: '#97bf0f' }}>
+      {windowWidth <= 768 && loginStatus ? (
+            sidebar ? (
+              <FaTimes className="close-bars cursor-pointer" onClick={closeSidebar} />
+            ) : (
+              <FaBars className="menu-bars cursor-pointer" onClick={toggleSidebar} />
+            )
+          ) : null}
+          <nav
+            className={`${
+              sidebar && loginStatus ? 'nav-menu active' : 'nav-menu-hidden'
+            }`}
+          >
+              <div
+              className={`overlay ${sidebar && loginStatus ? 'active' : ''}`}
+              onClick={closeSidebar}
+            ></div>
+            {loginStatus && <>
+              <ul className='grid grid-rows-8 items-center' onClick={showSidebar}>
+              <a href='/' className='row-span-2 flex justify-center mx-auto text-[#97bf0f] font-semibold'>
+                Drive share
+              </a>
+              <ul className='row-span-4 flex flex-col gap-y-3'>
+                {loginStatus === 'succeeded'
+                  ? sidebarData.map((link) => (
+                    <li key={link.id}>
+                      <NavLink
+                        onClick={showSidebar}
+                        key={link.id}
+                        to={link.path}
+                        className={link.cName}
+                      >
+                        {link.icon}
+                        {link.title}
+                      </NavLink>
+                    </li>
+                  ))
+                  : <span></span>
+                }
+              </ul>
+              <div className='row-span-2 flex flex-col'>
+                <div className='flex justify-center gap-x-2'>
+                  <FaTwitter className='social-icons' />
+                  <FaFacebook className='social-icons' />
+                  <FaGooglePlus className='social-icons' />
+                  <FaVimeo className='social-icons' />
+                  <FaPinterest className='social-icons' />
+                </div>
+                <div className='flex justify-center'>
+                  <button
+                    type='button'
+                    onClick={handleLogout}
+                    className='mt-5'
                   >
-                    <NavLink
-                      onClick={showSidebar}
-                      key={link.id}
-                      to={link.path}
-                      className='flex items-center  w-1/2 gap-x-3'
-                    >
-                      {link.icon}
-                      {link.title}
-                    </NavLink>
-                  </li>
-                ))}
+                    <FaSignInAlt />
+                  </button>
+                </div>
+              </div>
             </ul>
-            <div className='row-span-2 flex flex-col'>
-              <div className='flex justify-center gap-x-2'>
-                <FaTwitter className='social-icons' />
-                <FaFacebook className='social-icons' />
-                <FaGooglePlus className='social-icons' />
-                <FaVimeo className='social-icons' />
-                <FaPinterest className='social-icons' />
-              </div>
-              <div className='flex justify-center'>
-                <p className='copyrights'>&copy;2015 PIAGGIO </p>
-              </div>
-            </div>
-          </ul>
-        </nav>
+            </>}
+          </nav>
       </IconContext.Provider>
-
+      </>}
     </>
   );
 }

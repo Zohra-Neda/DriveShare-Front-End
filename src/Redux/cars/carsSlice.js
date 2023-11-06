@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 import axios from 'axios';
 
 export const getCars = createAsyncThunk('getCars', async (_, {rejectWithValue}) => {
@@ -10,12 +11,40 @@ export const getCars = createAsyncThunk('getCars', async (_, {rejectWithValue}) 
     }
 });
 
-export const postCar = createAsyncThunk('postCars', async (car, {rejectWithValue, dispatch}) => {
+export const postCar = createAsyncThunk('postCars', async (car, {rejectWithValue, dispatch, getState}) => {
     try{
-        const response = await axios.post('http://localhost:3000/cars', car);
-        dispatch(getCars());
-        return response.data;
+        const user = getState().login.user || JSON.parse(localStorage.getItem('user'));
+        const postedCar = {
+            ...car,
+            user_id: user.id
+        }
+
+        const response = await axios.post('http://localhost:3000/cars', postedCar);
+        if (response.status === 201 || response.status === 200) {
+            toast(`Created ${car.model} ${car.name}`, {
+                position: "top-right",
+                autoClose: 4000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+            dispatch(getCars());
+            return response.data;
+        }
     }catch(err) {
+        toast.error(`${err.message}!`, {
+            position: "top-right",
+            autoClose: 4000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+        });
         return rejectWithValue(err.message);
     }
 });

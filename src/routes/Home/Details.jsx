@@ -24,6 +24,7 @@ function Details() {
             <img src={image} alt={car[0].name} />
           </div>
           <div className='car-info'>
+            <h2>{car[0].model}</h2>
             <h1 className='font-bold mb-2 name'>{car[0].name}</h1>
             <p className='mb-2 text-gray-500 text-sm description'>{car[0].description}</p>
             <h2 className='font-bold mb-2'>Price: {car[0].price}$</h2>
