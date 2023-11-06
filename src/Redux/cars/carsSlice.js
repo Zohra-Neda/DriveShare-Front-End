@@ -51,9 +51,11 @@ export const postCar = createAsyncThunk('postCars', async (car, {rejectWithValue
 
 export const deleteCar = createAsyncThunk('deleteCar', async (id, {rejectWithValue, dispatch}) => {
     try{
+        console.log('I run')
         const response = await axios.delete(`http://localhost:3000/cars/${id}`);
         dispatch(getCars());
         return response.data;
+        console.log(response)
     }catch(err) {
         return rejectWithValue(err.message);
     }
