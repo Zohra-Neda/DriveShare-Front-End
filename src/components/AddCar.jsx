@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
 import { postCar } from "../Redux/cars/carsSlice"
 import {
     selectPosting,
@@ -11,6 +12,7 @@ import { selectAllCities } from "../Redux/cities/citySlice"
 
 const AddCar = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const posting = useSelector(selectPosting);
   const postingError = useSelector(selectPostingError);
@@ -23,6 +25,7 @@ const AddCar = () => {
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState('');
   const [city, setCity] = useState('');
+  const [model, setModel] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,13 +35,21 @@ const AddCar = () => {
       image,
       description,
       city_id: city,
+      model,
+      price
     }
 
     try{
+        if (
+            !name || !image || !description || !city || !model || price === 0
+        ) return;
         dispatch(postCar(car));
+        navigate('/')
         setName('');
         setImage('');
         setDescription('');
+        setModel('');
+        setPrice(0);
     }catch(err){
         console.log(err);
     }
@@ -53,6 +64,14 @@ const AddCar = () => {
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
+                />
+            </label>
+            <label htmlFor="">
+                Car model:<br />
+                <input
+                    type="text"
+                    value={model}
+                    onChange={(e) => setModel(e.target.value)}
                 />
             </label>
             <label htmlFor="">

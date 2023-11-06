@@ -25,12 +25,17 @@ const Pagineted = ({ items }) => {
                 {itemsToDisplay?.length ? itemsToDisplay?.map((item) => (
                     <NavLink to={`details/${item.id}`} key={item.id}>
                     <li
-                       
                         className='car cursor-pointer'
                     >
                         <div className="car-head">
                             <img src={car} alt={item.name} />
+                            <span
+                                className={`${item.available ? 'available' : 'reserved'}`}
+                            >
+                                {item.available ? 'available' : 'reserved'}
+                            </span>
                         </div>
+                        <h3>{item.model}</h3>
                         <h2>{item.name}</h2>
                         <p>{item.description}</p>
                     </li>
