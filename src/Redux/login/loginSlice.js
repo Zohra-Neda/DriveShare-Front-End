@@ -5,7 +5,7 @@ import axios from 'axios';
 export const createUser = createAsyncThunk('users/createUser', async (username, thunkAPI) => {
   try {
     const user = { "name": username };
-    const response = await axios.post("http://localhost:3000/users", user);
+    const response = await axios.post("https://drive-share-app.onrender.com/users", user);
     if (response.status === 200 || response.status === 201) {
       localStorage.setItem('user', JSON.stringify(response.data));
       toast(`Welcome, ${username}!`, {

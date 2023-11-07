@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export const getCars = createAsyncThunk('getCars', async (_, {rejectWithValue}) => {
     try{
-        const response = await axios.get('http://localhost:3000/cars');
+        const response = await axios.get('https://drive-share-app.onrender.com/cars');
         return response.data;
     }catch(err) {
         return rejectWithValue(err.message);
@@ -19,7 +19,7 @@ export const postCar = createAsyncThunk('postCars', async (car, {rejectWithValue
             user_id: user.id
         }
 
-        const response = await axios.post('http://localhost:3000/cars', postedCar);
+        const response = await axios.post('https://drive-share-app.onrender.com/cars', postedCar);
         if (response.status === 201 || response.status === 200) {
             toast(`Created ${car.model} ${car.name}`, {
                 position: "top-right",
@@ -52,7 +52,8 @@ export const postCar = createAsyncThunk('postCars', async (car, {rejectWithValue
 export const deleteCar = createAsyncThunk('deleteCar', async (id, {rejectWithValue, dispatch}) => {
     try{
         console.log('I run')
-        const response = await axios.delete(`http://localhost:3000/cars/${id}`);
+        const response = await axios.delete(`https://drive-share-app.onrender.com
+/cars/${id}`);
         dispatch(getCars());
         return response.data;
         console.log(response)

@@ -6,7 +6,8 @@ import axios from "axios";
 export const getReservations = createAsyncThunk('getReservations', async (_, {getState, rejectWithValue} ) => {
     try {
         const user = getState().login.user || JSON.parse(localStorage.getItem('user'));
-        const response = await axios.get(`http://localhost:3000/reservations?user_id=${user.id}`);
+        const response = await axios.get(`https://drive-share-app.onrender.com
+/reservations?user_id=${user.id}`);
         return response.data;
     } catch (error) {
         return rejectWithValue(error.message)
@@ -23,7 +24,7 @@ export const postReservations = createAsyncThunk('postReservations', async (rese
             "user_id": `${user.id}`,
             "city_id": reservation.city,
         }
-        const response = await axios.post('http://localhost:3000/reservations', reserve);
+        const response = await axios.post('https://drive-share-app.onrender.com/reservations', reserve);
         if (response.status === 200 || response.status === 201) {
             dispatch(getCars());
             toast(`Reserved ${car.model} ${car?.name} successfully!`, {

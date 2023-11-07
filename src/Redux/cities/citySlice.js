@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const getCities = createAsyncThunk('getCities', async (_, {rejectWithValue}) => {
     try {
-        const res = await axios.get('http://localhost:3000/cities');
+        const res = await axios.get('https://drive-share-app.onrender.com/cities');
         return res.data;
     } catch (error) {
         return rejectWithValue(error.message)
@@ -12,7 +12,7 @@ export const getCities = createAsyncThunk('getCities', async (_, {rejectWithValu
 
 export const postCities = createAsyncThunk('postCities', async (city) => {
     try {
-        const response = await axios.post('http://localhost:3000/cities', city);
+        const response = await axios.post('https://drive-share-app.onrender.com/cities', city);
         return response.data;
     } catch (error) {
         console.log(error);
