@@ -1,7 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import image from '../../assets/car.png';
 import { selectAllCars,selectLoading } from "../../Redux/cars/carsSlice";
 import { useParams, useNavigate } from 'react-router-dom';
 import { setCarToReserve } from '../../Redux/reservations/reservationsSlice';
