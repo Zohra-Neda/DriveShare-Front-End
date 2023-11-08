@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getReservations, postReservations } from '../Redux/reservations/reservationsSlice';
-import { getCars } from '../Redux/cars/carsSlice';
 import '../styles/reserve.css'
 
 
@@ -44,7 +43,7 @@ function ReservationForm() {
     navigate('/reservations');
   }
 
-  const { fullName, car_id, city, start_date, end_date } = formData;
+  const { car_id, city, start_date, end_date } = formData;
 
   return (
     <section>

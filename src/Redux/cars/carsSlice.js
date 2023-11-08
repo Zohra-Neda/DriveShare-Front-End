@@ -56,7 +56,6 @@ export const deleteCar = createAsyncThunk('deleteCar', async (id, {rejectWithVal
 /cars/${id}`);
         dispatch(getCars());
         return response.data;
-        console.log(response)
     }catch(err) {
         return rejectWithValue(err.message);
     }
