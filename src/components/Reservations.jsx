@@ -5,7 +5,7 @@ import ReservationsCard from './ReservationsCard';
 import '../styles/Reservations.css'
 
 
-function Reservations() {
+const Reservations = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {

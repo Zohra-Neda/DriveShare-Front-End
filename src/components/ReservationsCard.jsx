@@ -4,7 +4,7 @@ import { selectAllCities } from '../Redux/cities/citySlice';
 import PropTypes from 'prop-types';
 
 
-function ReservationsCard({reservation}) {
+const ReservationsCard = ({reservation}) => {
   const cars = useSelector(selectAllCars);
   const cities = useSelector(selectAllCities);
   const car = cars.find(c => c.id === reservation.car_id);

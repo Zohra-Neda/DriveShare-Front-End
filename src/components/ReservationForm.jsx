@@ -5,7 +5,7 @@ import { getReservations, postReservations } from '../Redux/reservations/reserva
 import '../styles/reserve.css'
 
 
-function ReservationForm() {
+const ReservationForm = () => {
   const dispatch = useDispatch();
   const cars = useSelector(state => state.cars.data); // Updated state path to access the cars array
   const reserveCars = cars.filter((car) => car.available === true)

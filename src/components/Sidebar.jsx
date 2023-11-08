@@ -14,7 +14,7 @@ import {
   import { IconContext } from 'react-icons';
 import '../styles/sidebar.css';
 
-function Sidebar() {
+const Sidebar = () => {
     const dispatch = useDispatch();
     const [sidebar, setSidebar] = useState(false);
     const loginStatus = useSelector((state) => state.login.status);
