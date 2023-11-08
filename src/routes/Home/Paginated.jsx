@@ -1,6 +1,5 @@
 import { useState } from "react";
 import PropTypes from 'prop-types';
-import car from '../../assets/car.png';
 import { NavLink } from "react-router-dom";
 const Pagineted = ({ items }) => {
     const [startIndex, setStartIndex] = useState(0);
