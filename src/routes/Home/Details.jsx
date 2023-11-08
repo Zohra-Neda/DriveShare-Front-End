@@ -30,7 +30,7 @@ const Details = () => {
        <div className='car-container'>
         <div key={car[0].id} className='car-details'>
           <div className='car-image'>
-            <img src={image} alt={car[0].name} />
+            <img src={car[0].image} alt={car[0].name} />
           </div>
           <div className='car-info'>
             <h2>{car[0].model}</h2>
