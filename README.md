@@ -47,9 +47,13 @@ DriveShare is a Full-stack web application. that makes easier to Add, reserve an
 
 
 ### Link to Kanban Board <a name="key-features"></a>
-[Kanban Board](https://github.com/Zohra-Neda/DriveShare-Back-End/projects/1)
+
+- It's a four-member team.
+- Check here [Kanban Board](https://github.com/Zohra-Neda/DriveShare-Back-End/projects/1)
+- Check here the initial state of the [Kanban Board Screenshot](https://user-images.githubusercontent.com/76215321/278043042-bd79c58f-351d-4d94-a4b6-f5809559c909.png)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 <!-- GETTING STARTED -->
 
