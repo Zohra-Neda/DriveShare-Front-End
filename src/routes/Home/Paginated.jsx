@@ -28,7 +28,7 @@ const Pagineted = ({ items }) => {
                         className='car cursor-pointer'
                     >
                         <div className="car-head">
-                            <img src={car} alt={item.name} />
+                            <img src={item.image} alt={item.name} />
                             <span
                                 className={`${item.available ? 'available' : 'reserved'}`}
                             >

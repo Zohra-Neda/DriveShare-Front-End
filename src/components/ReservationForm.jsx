@@ -8,6 +8,7 @@ import '../styles/reserve.css'
 const ReservationForm = () => {
   const dispatch = useDispatch();
   const cars = useSelector(state => state.cars.data); // Updated state path to access the cars array
+  const { carToReserve } = useSelector(state => state.reservations); // Updated state path to access the carToReserve object
   const reserveCars = cars.filter((car) => car.available === true)
   const cities = useSelector(state => state.city.data); // Updated state path to access the cities array
   const navigate = useNavigate();
@@ -62,12 +63,20 @@ const ReservationForm = () => {
             onChange={handleChange}
             name="car_id"
           >
-            <option value="">Select a car</option>
-            {reserveCars?.map((car) => (
-              <option key={car.id} value={car.id}>
-                {car.name}
-              </option>
-            ))}
+            { carToReserve ?
+              <>
+              <option key={carToReserve.id} value={carToReserve.id}>{carToReserve.name}</option>
+              </>
+              :
+              <>
+                <option value="">Select a car</option>
+                {reserveCars?.map((car) => (
+                <option key={car.id} value={car.id}>
+                  {car.name}
+                </option>
+                ))}
+              </>
+            }
           </select>
         </div>
         <div className="col select-wrapper">

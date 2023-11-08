@@ -27,6 +27,7 @@ export const postReservations = createAsyncThunk('postReservations', async (rese
         const response = await axios.post('https://drive-share-app.onrender.com/reservations', reserve);
         if (response.status === 200 || response.status === 201) {
             dispatch(getCars());
+            dispatch(clearCarToReserve())
             toast(`Reserved ${car.model} ${car?.name} successfully!`, {
                 position: "top-right",
                 autoClose: 4000,
@@ -60,11 +61,18 @@ export const postReservations = createAsyncThunk('postReservations', async (rese
 const reservationsSlice = createSlice({
     name: "reservations",
     initialState: {
-        data: []
+        data: [],
+        carToReserve: null,
     },
     reducers: {
         addReservation: (state, action) => {
             state.push(action.payload);
+        },
+        setCarToReserve: (state, action) => {
+            state.carToReserve = action.payload;
+        },
+        clearCarToReserve: (state) => {
+            state.carToReserve = null;
         }
     },
     extraReducers: (builder) => {
@@ -74,4 +82,5 @@ const reservationsSlice = createSlice({
     }
 });
 
+export const {setCarToReserve, clearCarToReserve} = reservationsSlice.actions;
 export default reservationsSlice.reducer;

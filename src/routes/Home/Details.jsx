@@ -1,21 +1,30 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
-import { useSelector} from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import image from '../../assets/car.png';
 import { selectAllCars,selectLoading } from "../../Redux/cars/carsSlice";
-import { useParams, NavLink } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import { setCarToReserve } from '../../Redux/reservations/reservationsSlice';
 import "../../assets/styles/details.css"
 
 const Details = () => {
-    const cars = useSelector(selectAllCars);
-    const isLoading = useSelector(selectLoading);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-    const { carId } = useParams()
-    const car = cars.filter((car) => car.id === Number(carId))
+  const cars = useSelector(selectAllCars);
+  const isLoading = useSelector(selectLoading);
 
-    if (isLoading) {
-        return <div>Loading...</div>;
-      }
+  const { carId } = useParams()
+  const car = cars.filter((car) => car.id === Number(carId));
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+  const handleReserve = () => {
+    dispatch(setCarToReserve(car[0]));
+    navigate('/reserve');
+  }
+
   return (
     <>
        <div className='car-container'>
@@ -28,9 +37,13 @@ const Details = () => {
             <h1 className='font-bold mb-2 name'>{car[0].name}</h1>
             <p className='mb-2 text-gray-500 text-sm description'>{car[0].description}</p>
             <h2 className='font-bold mb-2'>Price: {car[0].price}$</h2>
-            <NavLink to='/reserve' className='reserve-button'>
+            <button
+              onClick={handleReserve}
+              type='button'
+              className='reserve-button'
+            >
               Reserve
-            </NavLink>
+            </button>
           </div>
         </div>
     </div>
