@@ -19,7 +19,9 @@ export const postCar = createAsyncThunk('postCars', async (car, { rejectWithValu
         const isValidImage = await isValidImageUrl(car.image);
 
         // If not valid, replace with a placeholder image
-        const imageToPost = isValidImage ? car.image : '/src/assets/car.png';
+        const imageToPost = isValidImage ?
+            car.image :
+            'https://pngimg.com/uploads/mercedes/mercedes_PNG80220.png';
 
         const postedCar = {
             ...car,
