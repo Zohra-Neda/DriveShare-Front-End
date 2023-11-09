@@ -27,7 +27,8 @@ export const postReservations = createAsyncThunk('postReservations', async (rese
         const response = await axios.post('https://drive-share-app.onrender.com/reservations', reserve);
         if (response.status === 200 || response.status === 201) {
             dispatch(getCars());
-            dispatch(clearCarToReserve())
+            dispatch(getReservations());
+            dispatch(clearCarToReserve());
             toast(`Reserved ${car.model} ${car?.name} successfully!`, {
                 position: "top-right",
                 autoClose: 4000,
