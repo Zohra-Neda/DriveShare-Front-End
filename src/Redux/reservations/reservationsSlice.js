@@ -24,23 +24,22 @@ export const postReservations = createAsyncThunk('postReservations', async (rese
             "user_id": `${user.id}`,
             "city_id": reservation.city,
         }
-        // const response = await axios.post('https://drive-share-app.onrender.com/reservations', reserve);
-        // if (response.status === 200 || response.status === 201) {
-        //     dispatch(getCars());
-        //     dispatch(clearCarToReserve())
-        //     toast(`Reserved ${car.model} ${car?.name} successfully!`, {
-        //         position: "top-right",
-        //         autoClose: 4000,
-        //         hideProgressBar: false,
-        //         closeOnClick: true,
-        //         pauseOnHover: true,
-        //         draggable: true,
-        //         progress: undefined,
-        //         theme: "dark",
-        //     });
-        // }
-        // return response.data;
-        console.log(reserve)
+        const response = await axios.post('https://drive-share-app.onrender.com/reservations', reserve);
+        if (response.status === 200 || response.status === 201) {
+            dispatch(getCars());
+            dispatch(clearCarToReserve())
+            toast(`Reserved ${car.model} ${car?.name} successfully!`, {
+                position: "top-right",
+                autoClose: 4000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+        }
+        return response.data;
     } catch (error) {
         toast.error(`${error.message}!`, {
             position: "top-right",
