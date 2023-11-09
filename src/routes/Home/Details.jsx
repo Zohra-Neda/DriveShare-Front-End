@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { selectAllCars,selectLoading } from "../../Redux/cars/carsSlice";
 import { useParams, useNavigate } from 'react-router-dom';
 import { setCarToReserve } from '../../Redux/reservations/reservationsSlice';
-import "../../assets/styles/details.css"
+import "../../styles/details.css"
 
 const Details = () => {
   const dispatch = useDispatch();
