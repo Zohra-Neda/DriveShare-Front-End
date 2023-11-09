@@ -109,7 +109,7 @@ const ReservationForm = () => {
         onChange={handleChange}
         name="end_date"
       />
-      <button type="submit" className="btn btn-light text-success">
+      <button type="submit" className="btn btn-light text-success create-reserve">
         Create Reservation
       </button>
     </form>

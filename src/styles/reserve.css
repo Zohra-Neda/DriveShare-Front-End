@@ -52,3 +52,7 @@
 .reservation-container select option {
   color: black;
 }
+
+.create-reserve {
+  background-color: #fff !important;
+}

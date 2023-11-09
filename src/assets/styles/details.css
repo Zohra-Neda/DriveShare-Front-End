@@ -23,7 +23,7 @@
 }
 
 .reserve-button {
-  background-color: green;
+  background-color: green !important;
   color: white;
   padding: 0.5rem 1rem;
   border: none;
