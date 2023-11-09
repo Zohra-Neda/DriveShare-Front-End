@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  color: #171717;
+  font-family: 'Lato', sans-serif;
+}
+
+img,
+svg {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.main {
+  width: 100vw;
+  display: flex;
+}
+
+.home {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
+
+section {
+  width: 100%;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: bolder;
+  text-transform: uppercase;
+}
+
+.car-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row wrap;
+  padding: 12px;
+  width: 100%;
+  gap: 8%;
+}
+
+.car {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.car h2 {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.car-head {
+  width: 260px;
+  height: 170px;
+  overflow: hidden;
+  position: relative;
+}
+
+.available,
+.reserved {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 5px 7px;
+  border-radius: 10px;
+  background-color: #97bf0f;
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.reserved {
+  background-color: #ccc;
+}
+
+.page-numbers {
+  display: flex;
+  padding: 12px;
+  gap: 12px;
+}
+
+.car-form {
+  width: 100%;
+}
+
+.car-form h2 {
+  font-weight: bold;
+  font-size: 1.8rem;
+  padding: 1rem 0;
+}
+
+.car-form h2 span {
+  color: #97bf0f;
+}
+
+.car-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 390px;
+}
+
+.car-form form label {
+  font-weight: bold;
+}
+
+.car-form form input,
+textarea,
+select {
+  padding: 8px;
+  border: 2px solid gray;
+  width: 100%;
+  font-weight: 500;
+}
+
+.car-form form input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border: 2px solid #97bf0f;
+}
+
+.car-form button {
+  padding: 8px;
+  cursor: pointer;
+  background-color: #97bf0f;
+  color: #fff;
+}
+
+.prev-btn,
+.next-btn {
+  position: absolute;
+  padding: 8px;
+  color: #fff;
+  font-size: 1.7rem;
+  font-weight: bolder;
+  background-color: #97bf0f;
+  width: 60px;
+}
+
+.prev-btn {
+  left: 0;
+  border-radius: 0 30px 30px 0;
+}
+
+.next-btn {
+  right: 0;
+  border-radius: 30px 0 0 30px;
+}
+
+.prev-btn:disabled,
+.next-btn:disabled {
+  background-color: #ccc;
+  color: #fff;
+  cursor: not-allowed;
+}
+
+.login-title {
+  color: #97bf0f;
+}
+
+.login-btn:hover {
+  background-color: #97bf0f;
+}
+
+.Toastify__progress-bar {
+  background-color: #97bf0f;
+}
+
+.delete-section {
+  overflow-y: scroll;
+  height: 100vh;
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    flex-direction: column;
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .car-list {
+    flex-direction: column;
+  }
+
+  .car-form form {
+    width: 100%;
+  }
+}
