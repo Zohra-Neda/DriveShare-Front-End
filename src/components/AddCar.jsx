@@ -80,6 +80,7 @@ const AddCar = () => {
                     type="text"
                     value={image}
                     onChange={(e) => setImage(e.target.value)}
+                    placeholder="Add a valid car image url"
                 />
             </label>
             <label htmlFor="">

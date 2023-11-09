@@ -19,7 +19,7 @@ const ReservationForm = () => {
 
   const [formData, setFormData] = useState({
     fullName: '',
-    car_id: '',
+    car_id: carToReserve ? carToReserve.id : '',
     city: '',
     start_date: '',
     end_date: ''
