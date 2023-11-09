@@ -11,12 +11,20 @@ export const getCars = createAsyncThunk('getCars', async (_, {rejectWithValue}) 
     }
 });
 
-export const postCar = createAsyncThunk('postCars', async (car, {rejectWithValue, dispatch, getState}) => {
-    try{
+export const postCar = createAsyncThunk('postCars', async (car, { rejectWithValue, dispatch, getState }) => {
+    try {
         const user = getState().login.user || JSON.parse(localStorage.getItem('user'));
+
+        // Check if car.image is valid
+        const isValidImage = await isValidImageUrl(car.image);
+
+        // If not valid, replace with a placeholder image
+        const imageToPost = isValidImage ? car.image : '/src/assets/car.png';
+
         const postedCar = {
             ...car,
-            user_id: user.id
+            user_id: user.id,
+            image: imageToPost,
         }
 
         const response = await axios.post('https://drive-share-app.onrender.com/cars', postedCar);
@@ -34,7 +42,7 @@ export const postCar = createAsyncThunk('postCars', async (car, {rejectWithValue
             dispatch(getCars());
             return response.data;
         }
-    }catch(err) {
+    } catch (err) {
         toast.error(`${err.message}!`, {
             position: "top-right",
             autoClose: 4000,
@@ -48,6 +56,21 @@ export const postCar = createAsyncThunk('postCars', async (car, {rejectWithValue
         return rejectWithValue(err.message);
     }
 });
+
+// Function to check if the image URL is valid
+const isValidImageUrl = async (url) => {
+    try {
+        // Send a HEAD request to the image URL
+        await axios.head(url);
+        return true; // Image is valid
+    } catch (error) {
+        // Axios error, image is not valid
+        toast.error('Invalid image URL!, Using placeholder image instead',{
+            theme: "dark",
+        });
+        return false;
+    }
+};
 
 export const deleteCar = createAsyncThunk('deleteCar', async (id, {rejectWithValue, dispatch}) => {
     try{

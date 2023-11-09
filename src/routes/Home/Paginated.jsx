@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PropTypes from 'prop-types';
 import { NavLink } from "react-router-dom";
+
 const Pagineted = ({ items }) => {
     const [startIndex, setStartIndex] = useState(0);
 
