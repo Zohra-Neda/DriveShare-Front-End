@@ -21,7 +21,7 @@ const DeleteCar = () => {
     <div className="flex flex-col delete-section">
       <h1 className="bg-white sm:w-full py-4 top-0">Delete Car</h1>
       <div className="flex flex-col flex-wrap">
-        {myCars.map((car) => (
+        {Cars.map((car) => (
           <div key={car.id} className="p-4 my-4 border border-black flex justify-between">
             <h3 className="text-3xl font-semibold">{car.model} {car.name}</h3>
             <button id={car.id} className="text-xl hover:text-red-500" onClick={handleDelete}>Delete</button>
